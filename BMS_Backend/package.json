@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon dist/app.js",
-    "dev": "ts-node src/app.ts"
+    "dev": "BMS_Backend src/app.ts"
   },
   "moduleAliases": {
     "@core": "dist/api/core",
