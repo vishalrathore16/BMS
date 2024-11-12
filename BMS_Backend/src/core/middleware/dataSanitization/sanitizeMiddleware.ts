@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import {z } from 'zod';
 import { ResponseCodes } from '../../../enums/responseCodes';
+import { ObjectSchema } from 'joi';
 
 export const sanitizeMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const sanitizeInput = (input: any) => {
@@ -40,8 +41,20 @@ export const validateMiddleware = (schema: z.ZodSchema) => {
       }
       
       next(); 
+    }
+    }
+
+export const tokenMiddleware = (schema: ObjectSchema) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const { error } = schema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: error.details[0].message });
+    }
+    next();
   };
 };
+
+
 
 
 

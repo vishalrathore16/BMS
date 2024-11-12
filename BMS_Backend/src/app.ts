@@ -1,4 +1,4 @@
-import express , {Request , Response , NextFunction} from 'express';
+import express  from 'express';
 import { initializeDatabases, knexWithDB,KnexInstanceWithDB } from './config/knex.config';
 import userrouter from './core/routes/users/authRoutes';
 import bodyParser from 'body-parser';

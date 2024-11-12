@@ -5,7 +5,16 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon dist/app.js",
-    "dev": "BMS_Backend src/app.ts"
+    "dev": "BMS_Backend src/app.ts",
+    "migrate:make": "knex migrate:make --knexfile src/db/knexfile",
+    "migrate:latest": "knex migrate:latest --knexfile src/db/knexfile",
+    "migration:rollback": "knex migrate:rollback --knexfile src/db/knexfile",
+    "migration:status": "knex migrate:status --knexfile src/db/knexfile",
+    "migration:up": "knex migrate:up --knexfile src/db/knexfile",
+    "migration:down": "knex migrate:down --knexfile src/db/knexfile",
+    "seed:run": "knex seed:run --knexfile src/db/knexfile",
+    "seed:make": "knex seed:make --knexfile src/db/knexfile",
+    "test": "jest"
   },
   "moduleAliases": {
     "@core": "dist/api/core",
@@ -39,12 +48,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "install": "^0.13.0",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "module-alias": "^2.2.3",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
     "npm": "^10.9.0",
+    "uuid": "^11.0.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {

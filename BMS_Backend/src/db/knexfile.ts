@@ -1,4 +1,3 @@
-import { clearScreenDown } from 'readline';
 import { knexWithDB } from '../config/knex.config';
 
 const config = {
@@ -8,7 +7,7 @@ const config = {
         tableName: 'knex_migrations',
     },
     seeds: {
-        directory: './seeds',clearScreenDown
+        directory: './seed'
     },    
 };
 

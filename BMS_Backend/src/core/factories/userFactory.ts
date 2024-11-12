@@ -3,15 +3,16 @@ import { UserMessages } from '../../enums/responseMessages';
 import userModel from '../models/userModel';
 
 export class UserFactory {
+    
     private userModel: userModel
 
     constructor(db: Knex) {
         this.userModel = new userModel(db);
     }
 
-    public  async register(email: string, password: string, role: string): Promise<any> {
+    public  async register( first_name: string, last_name: string, email: string, password: string, ): Promise<any> {
         try {
-            const user = await this.userModel.create(email,password,role);
+            const user = await this.userModel.create(first_name, last_name, email, password);
             if(!user){
                 throw  new Error(UserMessages.UserNotFound);
             }
@@ -36,8 +37,8 @@ export class UserFactory {
         }
     }
 
-    public async createAdmin(email: string, password: string, role:string) {
-        return await this.userModel.create(email, password , role);
+    public async createAdmin(first_name:string, last_name:string, email: string, password: string) {
+        return await this.userModel.create(first_name, last_name, email, password);
     }
 
     public async updateAdminPassword(email: string, oldPassword: string, newPassword: string) {

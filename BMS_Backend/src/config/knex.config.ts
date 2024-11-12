@@ -2,14 +2,13 @@ import { Knex , knex} from 'knex';
 import { loadEnvironment } from './datasource.config';
 
 const { KNEX } = loadEnvironment(process.cwd(), "dist");
-
 const knexWithDB: Knex.Config = {
     client: 'mysql2',
     connection: {
-        host: KNEX.DB_HOST,
-        user: KNEX.DB_USER,
-        password: KNEX.DB_PASSWORD,
-        database: KNEX.DB_NAME,
+        host: KNEX.DB_HOST||'localhost',
+        user: KNEX.DB_USER||'root',
+        password: KNEX.DB_PASSWORD||'1234',
+        database: KNEX.DB_NAME||'bookingDB',
         port: Number(KNEX.DB_PORT),
     },
     pool: { min: 2, max: 10 },
